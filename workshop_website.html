@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Artifacts Workshop</title>
+    <style>
+        :root {
+            --primary: #7852FF;
+            --primary-light: #9B7DF9;
+            --dark: #20123A;
+            --light: #F7F5FF;
+            --accent: #00C2CB;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        h1, h2, h3 {
+            color: var(--dark);
+        }
+        
+        header h1 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .step-card {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .step-number {
+            background-color: var(--primary);
+            color: white;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            position: absolute;
+            top: -18px;
+            left: 20px;
+            font-weight: bold;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .activities {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            margin: 3rem 0;
+        }
+        
+        .activities h2 {
+            color: white;
+            text-align: center;
+        }
+        
+        .activity-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .activity-item {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .activity-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        
+        .cta {
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .button:hover {
+            background-color: var(--primary-light);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .demo-container {
+            border: 2px dashed var(--primary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            background-color: rgba(123, 82, 255, 0.05);
+        }
+        
+        .code-example {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        @media (max-width: 768px) {
+            .steps, .features, .activity-list {
+                flex-direction: column;
+            }
+            
+            .step-card, .feature-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Claude Artifacts Workshop</h1>
+            <p class="tagline">Transform ideas into interactive experiences with AI-powered development</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="card">
+            <h2>What is a Claude Artifact?</h2>
+            <p>Think of Claude artifacts as having an AI developer and designer who can instantly build what you describe. Artifacts are interactive components that Claude can create based on your descriptions.</p>
+            <ul>
+                <li>Claude takes charge of interpreting your idea and turning it into code</li>
+                <li>Components are built through code but presented as interactive elements</li>
+                <li>Ideas can be specific or open to Claude's interpretation</li>
+            </ul>
+            <div class="demo-container">
+                <h3>Example Request:</h3>
+                <p>"Claude, can you create a simple counter button that increments when clicked?"</p>
+                <h3>Result:</h3>
+                <div id="counter-demo" style="text-align: center; padding: 20px;">
+                    <p>Count: <span id="count">0</span></p>
+                    <button id="increment-btn" style="background: var(--primary); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Increment</button>
+                </div>
+            </div>
+        </div>
+        
+        <h2 style="text-align: center; margin-top: 3rem;">How to Create an Artifact</h2>
+        
+        <div class="steps">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Describe Your Idea</h3>
+                <p>Write a clear description of the component or tool you want to build. Be as detailed as necessary, but leave room for Claude's creativity if desired.</p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Request the Artifact</h3>
+                <p>Ask Claude to create an artifact based on your description. You can specify the type (interactive, visual, etc.) or let Claude decide.</p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Refine and Iterate</h3>
+                <p>Once the artifact is created, you can request changes, enhancements, or fixes to make it exactly what you need.</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Things to Consider</h2>
+            <h3>Rate Limits</h3>
+            <ul>
+                <li>Start with minimal versions of your idea</li>
+                <li>Build components one at a time, then integrate them</li>
+                <li>For long conversations, consider remixing to start fresh</li>
+            </ul>
+            
+            <h3>Common Errors</h3>
+            <ul>
+                <li>Large artifacts may stop midway - use the continue button</li>
+                <li>Syntax errors can be fixed with the fix button</li>
+                <li>Provide detailed descriptions for complex ideas</li>
+            </ul>
+            
+            <div class="code-example">
+                <pre>// Example of requesting a simple React component
+"Claude, can you create a React component that 
+shows a color picker and displays the selected color?"</pre>
+            </div>
+        </div>
+        
+        <h2 style="text-align: center; margin-top: 3rem;">Key Features</h2>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">✏️</div>
+                <h3>Edit & Improve</h3>
+                <p>Request changes to your artifact at any time to refine functionality or appearance</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Remix</h3>
+                <p>Build on top of existing artifacts to create new versions with enhanced features</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📤</div>
+                <h3>Share</h3>
+                <p>Share your creations with others to showcase your ideas or collaborate</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="activities">
+        <div class="container">
+            <h2>Hands-on Activities</h2>
+            
+            <div class="activity-list">
+                <div class="activity-item">
+                    <span class="activity-icon">🛠️</span>
+                    <h3>Create Your First Artifact</h3>
+                    <p>Try creating a simple interactive component based on your own idea</p>
+                </div>
+                
+                <div class="activity-item">
+                    <span class="activity-icon">🔄</span>
+                    <h3>Remix Challenge</h3>
+                    <p>Take an existing artifact and enhance it with new features</p>
+                </div>
+                
+                <div class="activity-item">
+                    <span class="activity-icon">🔍</span>
+                    <h3>Error Handling</h3>
+                    <p>Practice identifying and fixing common issues in artifacts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="cta">
+            <h2>Ready to Start Creating?</h2>
+            <p>Join our workshop and transform your ideas into interactive experiences!</p>
+            <a href="#" class="button">Register Now</a>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Claude Artifacts Workshop &copy; 2025</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple counter functionality for demo
+        document.addEventListener('DOMContentLoaded', function() {
+            const countElement = document.getElementById('count');
+            const incrementButton = document.getElementById('increment-btn');
+            
+            let count = 0;
+            
+            incrementButton.addEventListener('click', function() {
+                count++;
+                countElement.textContent = count;
+            });
+        });
+    </script>
+</body>
+</html>
