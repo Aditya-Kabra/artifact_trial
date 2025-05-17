@@ -1,3 +1,3 @@
 # artifact_trial
 
-- [workshop](workshop.html)
+- [workshop_website](workshop_website.html)
